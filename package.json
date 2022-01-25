@@ -25,14 +25,12 @@
     "dist/src/types",
     "dist/deploy/*.js"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "hardhat-gas-reporter": "^1.0.4",
     "@ensdomains/ens-contracts": "^0.0.4",
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.11",
     "@nomiclabs/hardhat-etherscan": "^2.1.8",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@openzeppelin/contracts-upgradeable": "4.4.0",
     "@openzeppelin/hardhat-upgrades": "^1.12.0",
     "@openzeppelin/upgrades-core": "^1.10.0",
@@ -45,6 +43,7 @@
     "@typescript-eslint/parser": "^5.4.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
+    "custom-env": "^2.0.1",
     "dotenv": "^10.0.0",
     "eslint": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -52,6 +51,7 @@
     "ethers": "^5.5.1",
     "hardhat": "^2.7.0",
     "hardhat-deploy": "^0.9.12",
+    "hardhat-gas-reporter": "^1.0.4",
     "logdown": "^3.3.1",
     "prettier": "^2.5.0",
     "prettier-plugin-solidity": "^1.0.0-beta.19",

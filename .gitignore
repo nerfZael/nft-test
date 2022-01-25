@@ -9,7 +9,7 @@ deployments/localhost
 #Hardhat files
 cache
 artifacts
-typechain
+typechain-types
 
 #Environment
 .env

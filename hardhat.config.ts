@@ -76,7 +76,7 @@ const config: HardhatUserConfig = {
   //   apiKey: "",
   // },
   gasReporter: {
-    enabled: process.env.REPORT_GAS && process.env.REPORT_GAS === "true",
+    enabled: process.env.REPORT_GAS === "true",
   },
 };
 export default config;

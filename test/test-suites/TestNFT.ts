@@ -31,8 +31,8 @@ describe("Publishing versions", () => {
   });
 
   it("sanity", async () => {
-    const result = await testNFT.hello();
+    const baseUri = await testNFT.baseTokenURI();
 
-    expect(result).to.be.true;
+    expect(baseUri).to.equal("https://creatures-api.opensea.io/api/creature/");
   });
 });

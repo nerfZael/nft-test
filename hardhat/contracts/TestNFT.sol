@@ -15,6 +15,6 @@ contract TestNFT is ERC721Tradable {
     {}
 
     function baseTokenURI() override public pure returns (string memory) {
-        return "http://localhost:8080/api/nft/";
+        return "http://nft.neuralfield.com:8080/api/nft/";
     }
 }

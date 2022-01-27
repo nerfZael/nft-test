@@ -45,7 +45,7 @@ const config: HardhatUserConfig = {
       gasMultiplier: 1,
       chainId: 1337,
       accounts: {
-        mnemonic: "test test test test test test test test test test test test",
+        mnemonic: "test test test test test test test test test test test junk",
       },
       deploy: ["./deploy/scripts"],
     },
@@ -57,7 +57,7 @@ const config: HardhatUserConfig = {
       url: "http://127.0.0.1:8545",
       chainId: 1337,
       accounts: {
-        mnemonic: "test test test test test test test test test test test test",
+        mnemonic: "test test test test test test test test test test test junk",
       },
       deploy: ["./deploy/scripts"],
     },

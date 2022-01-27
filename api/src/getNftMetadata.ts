@@ -20,8 +20,6 @@ export const getNftMetadata = (nftId: string) => {
     canvas
   );
 
-  console.log(getNftColor(nftId));
-
   return {
     description: "A test NFT.", 
     external_url: "", 

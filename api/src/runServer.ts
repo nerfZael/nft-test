@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http";
 import { getNftMetadata } from "./getNftMetadata";
+import { log } from "./log";
 
 export const runServer = (port: number) => {
   const app = express();
@@ -19,7 +20,7 @@ export const runServer = (port: number) => {
     if (req.method === 'OPTIONS') {
       res.send(200);
     } else {
-      console.log("Request: " + req.method + " " + req.url);
+      log("Request: " + req.method + " " + req.url);
       next();
     }
   });
@@ -37,6 +38,6 @@ export const runServer = (port: number) => {
   const server = http.createServer({}, app);
   
   server.listen(port, function(){
-    console.log(`HTTP server started at http://localhost:${port}` );
+    log(`HTTP server started at http://localhost:${port}` );
   });
 };

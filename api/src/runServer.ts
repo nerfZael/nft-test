@@ -1,5 +1,6 @@
 import express from "express";
 import http from "http";
+import { getNftMetadata } from "./getNftMetadata";
 
 export const runServer = (port: number) => {
   const app = express();
@@ -26,13 +27,7 @@ export const runServer = (port: number) => {
   app.get('/api/nft/:id', async (req, res) => {
     const nftId = req.params.id;
 
-    res.json({
-      description: "A test NFT.", 
-      external_url: "", 
-      image: "https://storage.googleapis.com/opensea-prod.appspot.com/puffs/3.png", 
-      name: "Tester",
-      attributes: [], 
-    });
+    res.json(getNftMetadata(nftId));
   });
 
   app.get("/", async (req, res) => {

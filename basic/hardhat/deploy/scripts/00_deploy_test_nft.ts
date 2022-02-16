@@ -6,12 +6,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
   const useProxy = !hre.network.live;
+  const metadatApiBaseUri = "http://nft.neuralfield.com:8080/api/nft/";
 
   const testNFT = await deploy("TestNFT", {
     contract: "TestNFT",
     from: deployer,
     args: [
-      ethers.constants.AddressZero
+      ethers.constants.AddressZero,
+      metadatApiBaseUri
     ],
     log: true,
   });

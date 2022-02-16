@@ -33,6 +33,6 @@ describe("Publishing versions", () => {
   it("sanity", async () => {
     const baseUri = await testNFT.baseTokenURI();
 
-    expect(baseUri).to.equal("https://creatures-api.opensea.io/api/creature/");
+    expect(baseUri).to.equal("http://nft.neuralfield.com:8080/api/nft/");
   });
 });

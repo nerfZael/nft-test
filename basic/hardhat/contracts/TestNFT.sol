@@ -10,11 +10,15 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  * TestNFT - a contract for a non-fungible token
  */
 contract TestNFT is ERC721Tradable {
-    constructor(address _proxyRegistryAddress)
-        ERC721Tradable("TestNFT", "TNFT", _proxyRegistryAddress)
-    {}
+    string baseUri;
 
-    function baseTokenURI() override public pure returns (string memory) {
-        return "http://nft.neuralfield.com:8080/api/nft/";
+    constructor(address _proxyRegistryAddress, string memory _baseUri)
+        ERC721Tradable("TestNFT", "TNFT", _proxyRegistryAddress)
+    {
+        baseUri = _baseUri;
+    }
+
+    function baseTokenURI() override public view returns (string memory) {
+        return baseUri;
     }
 }

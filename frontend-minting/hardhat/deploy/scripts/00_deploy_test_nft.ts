@@ -18,6 +18,15 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
   });
 
+  const nftSale = await deploy("NFTSale", {
+    contract: "NFTSale",
+    from: deployer,
+    args: [
+      testNFT.address,
+    ],
+    log: true,
+  });
+
   return !useProxy;
 };
 export default func;

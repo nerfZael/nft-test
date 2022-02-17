@@ -6,7 +6,7 @@ import {
 } from "../../typechain-types";
 import { Signer } from "ethers";
 
-describe("Publishing versions", () => {
+describe("Test NFT", () => {
   let testNFT: TestNFT;
   let owner: Signer;
   let randomAcc: Signer;
@@ -34,5 +34,15 @@ describe("Publishing versions", () => {
     const baseUri = await testNFT.baseTokenURI();
 
     expect(baseUri).to.equal("http://nft.neuralfield.com:8080/api/nft/");
+  });
+
+
+  it("can mint by id", async () => {
+    await testNFT.setMinters([await owner.getAddress()]);
+    await testNFT.mintById(await randomAcc.getAddress(), 0);
+    await testNFT.mintById(await randomAcc.getAddress(), 1);
+
+    expect(await testNFT.ownerOf(0)).to.equal(await randomAcc.getAddress());
+    expect(await testNFT.ownerOf(1)).to.equal(await randomAcc.getAddress());
   });
 });

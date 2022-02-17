@@ -6,7 +6,7 @@ import {
 } from "../../typechain-types";
 import { Signer } from "ethers";
 
-describe("Publishing versions", () => {
+describe("Test NFT", () => {
   let testNFT: TestNFT;
   let owner: Signer;
   let randomAcc: Signer;

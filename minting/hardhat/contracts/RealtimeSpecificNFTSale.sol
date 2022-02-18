@@ -11,10 +11,10 @@ error AmountToHigh();
 error InvalidSignature();
 
 /**
- * @title NFTSale
- * NFTSale - a contract for a selling NFTs
+ * @title RealtimeSpecificNFTSale
+ * RealtimeSpecificNFTSale - a contract for a selling NFTs
  */
-contract NFTSale {
+contract RealtimeSpecificNFTSale {
    struct EIP712Domain {
         string  name;
         string  version;

@@ -1,17 +1,17 @@
 import hre, { ethers, deployments } from "hardhat";
 import chai, { expect } from "chai";
 import {
-  NFTSale,
-  NFTSale__factory,
+  RealtimeSpecificNFTSale,
+  RealtimeSpecificNFTSale__factory,
   TestNFT,
   TestNFT__factory,
 } from "../../typechain-types";
 import { Signer } from "ethers";
 import { JsonRpcSigner } from "@ethersproject/providers";
 
-describe("NFT Sale", () => {
+describe("Realtime specific NFT sale", () => {
   let testNFT: TestNFT;
-  let nftSale: NFTSale;
+  let saleContract: RealtimeSpecificNFTSale;
   let owner: Signer;
   let randomAcc: Signer;
 
@@ -33,22 +33,22 @@ describe("NFT Sale", () => {
 
     testNFT = testNFT.connect(owner);
 
-    nftSale = NFTSale__factory.connect(
-      deploys["NFTSale"].address,
+    saleContract = RealtimeSpecificNFTSale__factory.connect(
+      deploys["RealtimeSpecificNFTSale"].address,
       provider
     );
    
-    nftSale = nftSale.connect(owner);
+    saleContract = saleContract.connect(owner);
   });
 
   it("can buy NFT", async () => {
-    await testNFT.setMinters([nftSale.address]);
+    await testNFT.setMinters([saleContract.address]);
     
     //TODO Timed messages
    
-    await nftSale.setSigner(await owner.getAddress());
+    await saleContract.setSigner(await owner.getAddress());
    
-    nftSale = nftSale.connect(randomAcc);
+    saleContract = saleContract.connect(randomAcc);
 
     await reserveAndBuy(
       await randomAcc.getAddress(), 
@@ -56,7 +56,7 @@ describe("NFT Sale", () => {
         tokenId: 0,
         price: 10
       }, 
-      nftSale, 
+      saleContract, 
       owner as JsonRpcSigner
     );
 
@@ -66,7 +66,7 @@ describe("NFT Sale", () => {
         tokenId: 2,
         price: 20
       }, 
-      nftSale, 
+      saleContract, 
       owner as JsonRpcSigner
     );
 
@@ -75,10 +75,10 @@ describe("NFT Sale", () => {
   });
 });
 
-const reserveAndBuy = async (buyerAddress: string, saleInfo: SaleInfo, nftSale: NFTSale, signer: JsonRpcSigner) => {
-  const signature = await reserveNft(buyerAddress, saleInfo, nftSale.address, signer);
+const reserveAndBuy = async (buyerAddress: string, saleInfo: SaleInfo, saleContract: RealtimeSpecificNFTSale, signer: JsonRpcSigner) => {
+  const signature = await reserveNft(buyerAddress, saleInfo, saleContract.address, signer);
 
-  const tx = await nftSale.buy(
+  const tx = await saleContract.buy(
     saleInfo.tokenId, 
     saleInfo.price,
     signature.v, 

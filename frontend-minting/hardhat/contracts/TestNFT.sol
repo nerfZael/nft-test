@@ -3,13 +3,14 @@ pragma solidity ^0.8.11;
 
 import "hardhat/console.sol";
 import "./ERC721Tradable.sol";
+import "./IDelegatedMinting.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
  * @title TestNFT
  * TestNFT - a contract for a non-fungible token
  */
-contract TestNFT is ERC721Tradable {
+contract TestNFT is ERC721Tradable, IDelegatedMinting {
     string baseUri;
     mapping(address => bool) public minters;
 
@@ -22,6 +23,10 @@ contract TestNFT is ERC721Tradable {
         for(uint i = 0; i < _minters.length; i++) {
             minters[_minters[i]] = true;
         }
+    }
+
+    function isMinter(address account) external view returns (bool) {
+        return minters[account];
     }
 
     function baseTokenURI() override public view returns (string memory) {

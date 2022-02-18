@@ -44,7 +44,8 @@ describe("Realtime specific NFT sale", () => {
   it("can buy NFT", async () => {
     await testNFT.setMinters([saleContract.address]);
     
-    //TODO Timed messages
+    //TODO: Timed messages
+    //TODO: Buy multiple per account?
    
     await saleContract.setSigner(await owner.getAddress());
    

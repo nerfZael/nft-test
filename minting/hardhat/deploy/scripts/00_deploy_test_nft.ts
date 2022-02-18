@@ -44,7 +44,16 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     ],
     log: true,
   });
-  
+
+  const whitelistUserChosenNFTSale = await deploy("WhitelistUserChosenNFTSale", {
+    contract: "WhitelistUserChosenNFTSale",
+    from: deployer,
+    args: [
+      testNFT.address,
+    ],
+    log: true,
+  });
+
   return !useProxy;
 };
 export default func;

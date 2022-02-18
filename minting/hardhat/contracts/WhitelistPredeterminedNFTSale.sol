@@ -15,10 +15,10 @@ error SoldOut();
 error SaleNotFound();
 
 /**
- * @title WhitelistSpecificNFTSale
- * WhitelistSpecificNFTSale - a contract for a selling NFTs
+ * @title WhitelistPredeterminedNFTSale
+ * WhitelistPredeterminedNFTSale - a contract for a selling NFTs
  */
-contract WhitelistSpecificNFTSale {
+contract WhitelistPredeterminedNFTSale {
     struct Sale {
         mapping(address => bool) claimedAddresses;
         bool exists;

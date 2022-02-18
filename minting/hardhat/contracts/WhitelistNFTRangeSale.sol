@@ -15,8 +15,8 @@ error SoldOut();
 error SaleNotFound();
 
 /**
- * @title NFTSale
- * NFTSale - a contract for a selling NFTs
+ * @title WhitelistNFTRangeSale
+ * WhitelistNFTRangeSale - a contract for a selling NFTs
  */
 contract WhitelistNFTRangeSale {
     struct Sale {

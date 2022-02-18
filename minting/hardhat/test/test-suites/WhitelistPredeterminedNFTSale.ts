@@ -3,18 +3,17 @@ import chai, { expect } from "chai";
 import {
   TestNFT,
   TestNFT__factory,
-  WhitelistSpecificNFTSale,
-  WhitelistSpecificNFTSale__factory,
+  WhitelistPredeterminedNFTSale,
+  WhitelistPredeterminedNFTSale__factory,
 } from "../../typechain-types";
 import { Signer } from "ethers";
-import { JsonRpcSigner } from "@ethersproject/providers";
 import { keccak256, solidityKeccak256 } from "ethers/lib/utils";
 
 import { MerkleTree } from "merkletreejs";
 
 describe("Whitelist Specific NFT Sale", () => {
   let testNFT: TestNFT;
-  let saleContract: WhitelistSpecificNFTSale;
+  let saleContract: WhitelistPredeterminedNFTSale;
   let owner: Signer;
   let randomAcc: Signer;
 
@@ -36,8 +35,8 @@ describe("Whitelist Specific NFT Sale", () => {
 
     testNFT = testNFT.connect(owner);
 
-    saleContract = WhitelistSpecificNFTSale__factory.connect(
-      deploys["WhitelistSpecificNFTSale"].address,
+    saleContract = WhitelistPredeterminedNFTSale__factory.connect(
+      deploys["WhitelistPredeterminedNFTSale"].address,
       provider
     );
    
@@ -83,7 +82,7 @@ describe("Whitelist Specific NFT Sale", () => {
   });
 });
 
-const buyNft = async (saleContract: WhitelistSpecificNFTSale, tokenId: number, price: number, merkleRoot: string, merkleProof: string[]) => {
+const buyNft = async (saleContract: WhitelistPredeterminedNFTSale, tokenId: number, price: number, merkleRoot: string, merkleProof: string[]) => {
   const tx = await saleContract.buy(
     merkleRoot, 
     merkleProof, 

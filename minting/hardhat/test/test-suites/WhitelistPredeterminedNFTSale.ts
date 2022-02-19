@@ -7,7 +7,8 @@ import {
   WhitelistPredeterminedNFTSale__factory,
 } from "../../typechain-types";
 import { Signer } from "ethers";
-import { keccak256, solidityKeccak256 } from "ethers/lib/utils";
+import { solidityKeccak256 } from "ethers/lib/utils";
+import keccak256 from "keccak256";
 
 import { MerkleTree } from "merkletreejs";
 

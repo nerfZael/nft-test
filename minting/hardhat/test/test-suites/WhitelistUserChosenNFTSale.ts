@@ -63,6 +63,11 @@ describe("Whitelist User Chosen NFT Sale", () => {
     const leaf = elements[0];
 
     await saleContract.createSale(merkleRoot, 0, 10);
+    const tokenRange = await saleContract.getTokenRangeForSale(merkleRoot);
+
+    expect(tokenRange.fromTokenId.toNumber()).to.equal(0);
+    expect(tokenRange.toTokenId.toNumber()).to.equal(10);
+  
     
     saleContract = saleContract.connect(randomAcc);
     

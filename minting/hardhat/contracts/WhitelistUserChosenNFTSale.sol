@@ -57,6 +57,10 @@ contract WhitelistUserChosenNFTSale {
         return sales[merkleRoot].claimedAddresses[account];
     }
 
+    function getTokenRangeForSale(bytes32 merkleRoot) external view returns (uint256 fromTokenId, uint256 toTokenId) {
+        return (sales[merkleRoot].fromTokenId, sales[merkleRoot].toTokenId);
+    }
+
     function buy(bytes32 merkleRoot, bytes32[] calldata merkleProof, uint256 tokenId, uint256 price) external payable returns (uint256) {
         Sale storage sale = sales[merkleRoot];
 

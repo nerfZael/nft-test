@@ -46,6 +46,7 @@ describe("Realtime specific NFT sale", () => {
     
     //TODO: Timed messages
     //TODO: Buy multiple per account?
+    //TODO: Price per token
    
     await saleContract.setSigner(await owner.getAddress());
    

@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-import "./common/meta-transactions/ContentMixin.sol";
+import "./common/meta-transactions/RelayRecipientAndContextMixin.sol";
 import "./common/meta-transactions/NativeMetaTransaction.sol";
 
 contract OwnableDelegateProxy {}
@@ -24,7 +24,7 @@ contract ProxyRegistry {
  * @title ERC721Tradable
  * ERC721Tradable - ERC721 contract that whitelists a trading address, and has minting functionality.
  */
-abstract contract ERC721Tradable is ERC721, ContextMixin, NativeMetaTransaction, Ownable {
+abstract contract ERC721Tradable is ERC721, RelayRecipientAndContextMixin, NativeMetaTransaction, Ownable {
     using SafeMath for uint256;
     using Counters for Counters.Counter;
 
@@ -98,6 +98,6 @@ abstract contract ERC721Tradable is ERC721, ContextMixin, NativeMetaTransaction,
         view
         returns (address sender)
     {
-        return ContextMixin.msgSender();
+        return RelayRecipientAndContextMixin.msgSender();
     }
 }

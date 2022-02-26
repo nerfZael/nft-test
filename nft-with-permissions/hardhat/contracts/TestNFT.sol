@@ -5,13 +5,13 @@ import "hardhat/console.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./ERC721Tradable.sol";
 import "./IDelegatedMinting.sol";
-import "./MintManagement.sol";
+import "./ERC721MintManagement.sol";
 
 /**
  * @title TestNFT
  * TestNFT - a contract for a non-fungible token
  */
-contract TestNFT is MintManagement {
+contract TestNFT is ERC721MintManagement {
     string baseUri;
 
     constructor(address _proxyRegistryAddress, string memory _baseUri)
